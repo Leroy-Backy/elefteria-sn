@@ -44,6 +44,9 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Comment> comments = new HashSet<>();
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private Set<Notification> notifications;
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "post")
     private Poll poll;
 

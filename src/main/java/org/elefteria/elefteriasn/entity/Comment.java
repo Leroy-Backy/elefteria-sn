@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "comment")
@@ -29,6 +30,9 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "post_id")
     private Post post;
+    
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
+    private Set<Notification> notifications;
 
     public Comment(){}
 
